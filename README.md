@@ -85,7 +85,7 @@ Each abnormal proxy signal contributes one point to a score from 0 to 3. The das
 
 ### 5. Local and web display
 
-The SSD1306 OLED provides an immediate bedside view. The responsive Next.js interface presents live-looking telemetry, hardware placement, sensor status, and the risk summary on phones, tablets, and desktop screens.
+The SSD1306 OLED provides an immediate bedside view. The responsive Next.js interface presents live-looking telemetry, hardware placement, sensor status, and the risk summary on phones, tablets, and desktop screens..
 
 ### 6. Simple shared wiring
 
