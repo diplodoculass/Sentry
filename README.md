@@ -11,6 +11,18 @@ tags:
 
 > Three accessible sensors. One clear early-warning signal.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-cover.jpg" alt="SENTRA monitoring dashboard" width="100%">
+</p>
+
+<p align="center">
+  <a href="#overview">Overview</a> •
+  <a href="#demo--examples">Demo</a> •
+  <a href="#features-detailed">Features</a> •
+  <a href="#usage-instructions">Usage</a> •
+  <a href="#requirements--installation">Installation</a>
+</p>
+
 ---
 
 ## Acknowledgements
@@ -52,27 +64,27 @@ SENTRA is intended for students, caregivers, community-health innovators, and re
 ### Images
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-dashboard.jpg" width="800"><br/>
+  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-dashboard.jpg" alt="SENTRA dashboard overview" width="900"><br/>
   <i>Responsive SENTRA dashboard showing the three monitored signals, combined trend, and proxy score.</i>
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-score.jpg" width="800"><br/>
+  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-score.jpg" alt="SENTRA proxy-score panel" width="360"><br/>
   <i>The explainable 0–3 score identifies the signal currently contributing to the warning.</i>
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-hardware.jpg" width="800"><br/>
+  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-hardware.jpg" alt="SENTRA hardware prototype" width="480"><br/>
   <i>Working MYOSA/ESP32 prototype with the connected sensor and OLED modules.</i>
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-sensor-placement.jpg" width="800"><br/>
+  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-sensor-placement.jpg" alt="SENTRA sensor placement demonstration" width="480"><br/>
   <i>Prototype placement during a supervised demonstration.</i>
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-sensor-modules.jpg" width="800"><br/>
+  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-sensor-modules.jpg" alt="SENTRA sensor modules" width="520"><br/>
   <i>Close-up of the sensor modules mounted on MYOSA interface boards.</i>
 </p>
 
