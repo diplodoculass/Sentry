@@ -79,7 +79,7 @@ SENTRA is intended for students, caregivers, community-health innovators, and re
 ### Videos
 
 <video controls width="100%">
-  <source src="sentra-demo.mp4" type="video/mp4">
+  <source src="demo.mp4" type="video/mp4">
 </video>
 
 The local demonstration video introduces the problem, explains the system architecture and sensor roles, describes the edge-analysis approach, and walks through the dashboard.
@@ -246,7 +246,7 @@ npm run dev
   ├── sentra-hardware.jpg
   ├── sentra-sensor-placement.jpg
   ├── sentra-sensor-modules.jpg
-  └── sentra-demo.mp4
+  └── demo.mp4
 ```
 
 Project source: [github.com/diplodoculass/Sentry](https://github.com/diplodoculass/Sentry)
