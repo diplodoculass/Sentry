@@ -90,11 +90,18 @@ SENTRA is intended for students, caregivers, community-health innovators, and re
 
 ### Videos
 
+<p align="center">
+  <a href="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/demo.mp4">
+    <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-cover.jpg" alt="Play the SENTRA demonstration video" width="800">
+  </a><br/>
+  <a href="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/demo.mp4"><strong>▶ Watch the SENTRA demo video (MP4, 4:37)</strong></a>
+</p>
+
 <video controls width="100%">
   <source src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/demo.mp4" type="video/mp4">
 </video>
 
-The local demonstration video introduces the problem, explains the system architecture and sensor roles, describes the edge-analysis approach, and walks through the dashboard.
+The demonstration introduces the problem, explains the system architecture and sensor roles, shows the working hardware, describes the edge-analysis approach, and walks through the dashboard. If the embedded player is unavailable, use the preview or direct MP4 link above.
 
 ---
 
