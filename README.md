@@ -1,12 +1,12 @@
 ---
-publishDate: 2026-08-26T00:00:00Z
+publishDate: 2026-08-29T00:00:00Z
 title: SENTRA — Sepsis Early Non-invasive Tracking & Risk Assessment
-excerpt: A low-cost, non-invasive early-warning prototype that combines pulse, breathing, and mobility trends into one transparent bedside score.
-image: sentra-cover.jpg
+excerpt: A low-cost, non-invasive prototype that combines pulse, breathing, and mobility trends into a transparent bedside early-warning score.
+image: myosa-submission/sentra/sentra-cover.jpg
 tags:
   - healthcare
   - embedded-systems
-  - nextjs
+  - tinyml
 ---
 
 > Three accessible sensors. One clear early-warning signal.
@@ -15,36 +15,35 @@ tags:
 
 ## Acknowledgements
 
-SENTRA was developed for the MYOSA project challenge using the MYOSA motherboard and accessible I²C sensor modules. The project demonstrates how affordable hardware, thoughtful signal processing, and a clear user interface can make changes in a person's condition easier to notice.
+SENTRA was developed for the MYOSA project challenge using the MYOSA motherboard, an ESP32, and accessible I²C sensor modules. The project shows how affordable hardware, simple on-device analysis, and an explainable interface can make changes in a person's condition easier to notice.
 
-SENTRA is an educational research prototype—not a certified medical device. It does not diagnose sepsis or replace professional medical assessment.
+SENTRA is an educational research prototype, not a certified medical device. It does not diagnose sepsis or replace professional medical assessment.
 
 ---
 
 ## Overview
 
-Sepsis is a time-critical medical emergency. Early deterioration may appear as a combination of physiological and behavioural changes, yet continuous multi-parameter monitoring can be expensive or unavailable outside well-equipped clinical settings.
+Sepsis is a time-critical medical emergency. Deterioration can appear as a combination of physiological and behavioural changes, but continuous multi-parameter monitoring may be unavailable or too expensive outside well-equipped clinical settings.
 
-SENTRA explores a simple question: **Can low-cost, non-invasive sensors combine several weak signals into one understandable prompt for attention?**
+SENTRA explores whether three low-cost, non-invasive signals can be combined into a simple prompt for attention. The prototype monitors:
 
-The prototype continuously tracks three physiological proxies:
+* **Pulse trend** from reflected-light changes measured by an APDS9960 optical sensor
+* **Respiratory trend** from pressure changes measured by a BMP180 sensor
+* **Mobility trend** from acceleration measured by an MPU6050 sensor
 
-* **Pulse trend** using reflected-light changes from an APDS9960 optical sensor
-* **Respiratory trend** using pressure variation captured by a BMP180 sensor
-* **Mobility trend** using motion data from an MPU6050 accelerometer
+The ESP32-based MYOSA board filters these signals, compares them with configured thresholds or an initial mobility baseline, and assigns one point for each abnormal trend. The resulting proxy score ranges from **0 to 3** and appears on the local OLED display. The project also includes a responsive Next.js dashboard that demonstrates how readings, signal status, score contributors, and edge-model output can be presented clearly.
 
-The MYOSA board filters the signals, compares them with configured thresholds or a personal baseline, and assigns one point for each abnormal trend. The resulting score ranges from **0 to 3** and is shown on both the local OLED display and the responsive web dashboard.
-
-SENTRA is designed for students, caregivers, community-health innovators, and researchers exploring affordable early-warning systems. Its goal is not to produce a diagnosis; its goal is to make multi-signal deterioration **visible, explainable, and difficult to overlook**.
+SENTRA is intended for students, caregivers, community-health innovators, and researchers exploring affordable early-warning systems. Its purpose is to make multi-signal deterioration visible and explainable, not to provide a diagnosis.
 
 **Key features:**
 
 * Three-signal, non-invasive trend monitoring
-* Transparent and explainable scoring logic
-* Immediate bedside feedback on an OLED display
-* Responsive dashboard for clearer visual monitoring
-* Low-cost modular hardware with shared I²C wiring
-* Baseline-aware mobility analysis
+* Transparent 0–3 proxy scoring
+* Lightweight on-device logistic-regression inference
+* Immediate local feedback on an SSD1306 OLED
+* Responsive monitoring-dashboard prototype
+* Low-cost, shared-I²C hardware architecture
+* Personal mobility baseline established after startup
 
 ---
 
@@ -53,82 +52,94 @@ SENTRA is designed for students, caregivers, community-health innovators, and re
 ### Images
 
 <p align="center">
-  <img src="sentra-dashboard.jpg" width="800"><br/>
-  <i>SENTRA dashboard presenting live readings, sensor status, and the combined early-warning score</i>
+  <img src="myosa-submission/sentra/sentra-dashboard.jpg" width="800"><br/>
+  <i>Responsive SENTRA dashboard showing the three monitored signals, combined trend, and proxy score.</i>
 </p>
 
 <p align="center">
-  <img src="sentra-hardware.jpg" width="800"><br/>
-  <i>MYOSA motherboard connected to the optical, pressure, motion, and OLED modules</i>
+  <img src="myosa-submission/sentra/sentra-score.jpg" width="800"><br/>
+  <i>The explainable 0–3 score identifies the signal currently contributing to the warning.</i>
 </p>
 
 <p align="center">
-  <img src="sentra-score.jpg" width="800"><br/>
-  <i>Explainable score view showing which signal contributed to the current alert</i>
+  <img src="myosa-submission/sentra/sentra-hardware.jpg" width="800"><br/>
+  <i>Working MYOSA/ESP32 prototype with the connected sensor and OLED modules.</i>
+</p>
+
+<p align="center">
+  <img src="myosa-submission/sentra/sentra-sensor-placement.jpg" width="800"><br/>
+  <i>Prototype placement during a supervised demonstration.</i>
+</p>
+
+<p align="center">
+  <img src="myosa-submission/sentra/sentra-sensor-modules.jpg" width="800"><br/>
+  <i>Close-up of the sensor modules mounted on MYOSA interface boards.</i>
 </p>
 
 ### Videos
 
 <video controls width="100%">
-  <source src="sentra-demo.mp4" type="video/mp4">
+  <source src="myosa-submission/sentra/sentra-demo.mp4" type="video/mp4">
 </video>
 
-The demonstration covers sensor placement, live data capture, dashboard updates, and the change in score when one or more monitored trends cross their configured limits.
+The local demonstration video introduces the problem, explains the system architecture and sensor roles, describes the edge-analysis approach, and walks through the dashboard.
 
 ---
 
 ## Features (Detailed)
 
-### 1. Multi-signal monitoring instead of a single alarm
+### 1. Multi-signal monitoring
 
-Pulse, breathing, and movement can each change for many reasons. SENTRA does not treat one reading as a diagnosis. It combines three independent trends so the user can see a broader picture while still understanding exactly what caused an alert.
+Pulse, breathing, and movement can each change for many reasons. SENTRA does not treat one reading as a diagnosis. It combines three independent proxy trends so the user can see a broader picture while still understanding what caused an alert.
 
-### 2. Experimental non-invasive pulse estimation
+### 2. Experimental optical pulse estimation
 
-The user rests a fingertip lightly over the APDS9960 optical window while shielding it from strong ambient light. Variations in reflected light are sampled, smoothed, and analysed for repeating peaks to produce an experimental beats-per-minute estimate.
+The user rests a fingertip lightly over the APDS9960 optical window while shielding it from strong ambient light. The firmware samples proximity intensity at 25 Hz, removes the slowly changing background component, and detects rising peaks. Valid beat intervals are smoothed into an experimental beats-per-minute estimate.
 
-The APDS9960 is not a medical pulse sensor, so SENTRA presents this output as a prototype trend rather than a clinical measurement.
+The APDS9960 is not a medical pulse sensor, so this output is presented only as a prototype trend.
 
-### 3. Respiratory-trend tracking
+### 3. Respiratory-trend estimation
 
-The BMP180 is placed in a soft chest-worn pressure pocket. Expansion and relaxation during breathing create small pressure variations. After smoothing and peak detection, the system estimates a respiratory trend in breaths per minute.
+The BMP180 samples pressure at 10 Hz. When positioned in a soft wearable pressure pocket, expansion and relaxation during breathing can produce small pressure variations. The firmware removes slow pressure drift, detects repeating peaks, and smooths valid intervals into a breaths-per-minute estimate.
 
-This mechanism is intended to demonstrate low-cost respiratory trend sensing; its readings require calibration and are not equivalent to clinical respiratory monitoring.
+This approach requires physical calibration and is not equivalent to clinical respiratory monitoring.
 
 ### 4. Personal mobility baseline
 
-The MPU6050 is secured to the wrist or torso. The system calculates motion magnitude and short-window variance, then compares current activity with a baseline recorded after startup. A sustained reduction in movement can contribute to the combined score.
+The MPU6050 measures three-axis acceleration. The firmware calculates acceleration magnitude and deviation from gravity, smooths the resulting motion energy, and records a baseline during the first 30 seconds after startup. Later activity is expressed as a percentage of that baseline.
 
-Using a personal baseline makes the mobility signal more meaningful than applying the same fixed movement threshold to every user.
-
-### 5. Transparent 0–3 early-warning score
+### 5. Transparent proxy score
 
 Each abnormal trend contributes one point:
 
-| Signal | Normal state | Score contribution |
+| Signal | Prototype rule | Score contribution |
 | --- | --- | --- |
-| Pulse trend | Within configured range | `+1` when outside range |
-| Respiratory trend | Within configured range | `+1` when outside range |
-| Mobility trend | Near personal baseline | `+1` after sustained decline |
+| Pulse trend | Heart rate above 90 BPM | `+1` |
+| Respiratory trend | Respiratory rate above 22 breaths/min | `+1` |
+| Mobility trend | Mobility below 50% of baseline after calibration | `+1` |
 
-The total is intentionally simple:
+| Score | Prototype interface response |
+| --- | --- |
+| `0` | Continue monitoring |
+| `1` | Monitor closely and recheck sensor placement |
+| `2` | Display a prominent warning |
+| `3` | Display the highest-priority warning |
 
-| Score | Prototype status | Suggested interface response |
-| --- | --- | --- |
-| `0` | No monitored trend is abnormal | Continue monitoring |
-| `1` | One trend requires attention | Observe and recheck placement |
-| `2` | Multiple trends require attention | Show a prominent warning |
-| `3` | All monitored trends require attention | Show the highest-priority alert |
+These thresholds are demonstration defaults and must be calibrated and clinically validated before any real-world study.
 
-The dashboard displays each contributing signal beside the total. There is no hidden model and no unexplained prediction.
+### 6. On-device edge analysis
 
-### 6. Local display and responsive dashboard
+The firmware includes a compact three-feature logistic-regression calculation using normalized pulse, respiratory rate, and reduced mobility. It runs locally on the ESP32 and outputs a demonstration probability alongside the rule-based proxy score. The included coefficients are examples, not a clinically trained or validated model.
 
-The SSD1306 OLED provides an immediate bedside view of the score and key readings, even without opening another device. The Next.js dashboard expands this into a responsive visual interface with signal cards, status indicators, sensor-placement guidance, and an explainable score summary for phones, tablets, and desktop screens.
+### 7. OLED output and local data endpoint
 
-### 7. Low-cost shared I²C architecture
+The SSD1306 OLED shows heart rate, respiratory rate, mobility percentage, proxy score, model output, and finger-contact status. When Wi-Fi credentials are configured, the ESP32 also exposes the latest values as JSON at `http://<device-ip>/data`.
 
-All four modules have different I²C addresses, allowing them to share the same SDA and SCL lines without an additional multiplexer:
+The submitted Next.js dashboard currently uses simulated demo values to showcase the intended interface. Connecting it to the firmware JSON endpoint is a documented next development step.
+
+### 8. Shared I²C architecture
+
+All four modules use different I²C addresses, so they can share SDA and SCL without an additional multiplexer:
 
 | Module | Role | I²C address |
 | --- | --- | --- |
@@ -137,28 +148,21 @@ All four modules have different I²C addresses, allowing them to share the same 
 | BMP180 | Respiratory pressure proxy | `0x77` |
 | SSD1306 OLED | Local display | `0x3C` |
 
-This keeps the prototype modular, compact, and straightforward to reproduce.
-
-### 8. Honest and safety-aware design
-
-SENTRA clearly distinguishes experimental proxy measurements from clinical measurements. Sensor status, placement guidance, and score contributors remain visible so users can identify bad contact or unreliable input instead of trusting an unexplained number.
-
 ---
 
 ## Usage Instructions
 
 ### Hardware setup
 
-1. Connect the APDS9960, MPU6050, BMP180, and SSD1306 OLED to the shared I²C bus on the MYOSA motherboard.
-2. Place the BMP180 inside the soft chest-worn pressure pocket and secure it comfortably.
-3. Secure the MPU6050 to the wrist or torso so the sensor does not move independently from the wearer.
-4. Keep the APDS9960 optical window accessible for fingertip sampling and shield it from strong ambient light.
-5. Place the MYOSA board and OLED in a safe nearby enclosure.
-6. Power the system and remain at a normal activity level while it establishes the initial mobility baseline.
-7. Open the dashboard and confirm that all three sensors report an active status.
-8. Observe the individual trends and their contribution to the combined score.
+1. Disconnect power before changing any wiring.
+2. Connect the APDS9960, MPU6050, BMP180, and SSD1306 OLED to the shared 3.3 V I²C bus. The supplied ESP32 firmware uses GPIO 21 for SDA and GPIO 22 for SCL.
+3. Keep all modules on a common ground and verify that every module is 3.3 V compatible.
+4. Place the BMP180 in the soft pressure pocket and secure the MPU6050 to the wrist or torso.
+5. Keep the APDS9960 optical window accessible for fingertip sampling and shield it from strong ambient light.
+6. Power the system and maintain normal activity during the 30-second mobility-baseline period.
+7. Confirm the readings and sensor state on the OLED or Serial Monitor.
 
-### Run the dashboard locally
+### Run the dashboard
 
 ```bash
 git clone https://github.com/diplodoculass/Sentry.git
@@ -167,74 +171,67 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:3000` in a browser.
+Open `http://localhost:3000` in a modern browser.
 
-### Recommended demonstration sequence
+### Configure and upload the firmware
 
-1. Show the complete hardware and explain the purpose of each sensor.
-2. Demonstrate correct sensor placement.
-3. Show the three individual readings on the dashboard.
-4. Trigger a controlled change in one proxy signal and show its score contribution.
-5. Show how the OLED and dashboard present the same warning locally and remotely.
-6. End by explaining the limitations and the next validation step.
+1. Open `firmware/sentra_esp32/sentra_esp32.ino` in Arduino IDE.
+2. Install the libraries listed under Requirements / Installation.
+3. Select the correct ESP32 board and serial port.
+4. Optionally enter Wi-Fi credentials in `WIFI_SSID` and `WIFI_PASSWORD`; leave them empty for offline operation.
+5. Upload the sketch and open Serial Monitor at `115200` baud.
 
-> **Safety note:** SENTRA is for education and prototyping only. Do not use its readings to diagnose, exclude, or treat sepsis. Suspected sepsis requires immediate assessment by qualified medical professionals.
+> **Safety note:** SENTRA is for education and prototyping only. Do not use its output to diagnose, exclude, or treat sepsis. Suspected sepsis requires immediate assessment by qualified medical professionals.
 
 ---
 
 ## Tech Stack
 
-* **MYOSA motherboard** — sensor sampling, signal processing, and score calculation
+* **MYOSA motherboard / ESP32** — sensor sampling, signal processing, scoring, and local web endpoint
 * **APDS9960** — reflected-light pulse proxy
 * **BMP180** — pressure-based respiratory proxy
 * **MPU6050** — accelerometer-based mobility tracking
-* **SSD1306 OLED** — local readings and alert display
-* **Next.js 16** — web application framework
-* **React 19** — component-based dashboard interface
-* **TypeScript** — type-safe interface development
-* **CSS** — responsive layout and visual design
-* **Vercel** — dashboard deployment platform
-* **GitHub** — source control and open-source collaboration
+* **SSD1306 OLED** — local output and alerts
+* **Arduino C++** — embedded firmware
+* **Next.js 16 and React 19** — responsive dashboard
+* **TypeScript and CSS** — dashboard implementation and styling
+* **Git and GitHub** — source control and open-source collaboration
 
 ---
 
 ## Requirements / Installation
 
-### Software requirements
+### Dashboard requirements
 
 * Node.js 20.9 or newer
-* npm 10 or newer
+* npm
 * Git
-* A modern web browser
+* A modern browser
 
 ```bash
-git clone https://github.com/diplodoculass/Sentry.git
-cd Sentry
 npm install
 npm run dev
 ```
 
+### Firmware requirements
+
+* Arduino IDE with ESP32 board support
+* Adafruit APDS9960 Library
+* Adafruit MPU6050
+* Adafruit BMP085 Library (supports BMP180)
+* Adafruit SSD1306
+* Adafruit GFX Library
+* Adafruit Unified Sensor
+* Adafruit BusIO
+
 ### Hardware requirements
 
-* 1 × MYOSA motherboard
-* 1 × APDS9960 optical proximity and gesture sensor
-* 1 × BMP180 pressure sensor
-* 1 × MPU6050 accelerometer and gyroscope
-* 1 × SSD1306 I²C OLED display
-* Jumper wires
-* Soft wearable straps and pressure pocket
-* Safe non-conductive enclosure
-* Suitable power source for the MYOSA board
-
-### Submission media requirements
-
-Place these files in the same folder as this Markdown file:
-
-* `sentra-cover.jpg`
-* `sentra-dashboard.jpg`
-* `sentra-hardware.jpg`
-* `sentra-score.jpg`
-* `sentra-demo.mp4`
+* 1 × MYOSA motherboard with ESP32
+* 1 × APDS9960 module
+* 1 × BMP180 module
+* 1 × MPU6050 module
+* 1 × SSD1306 I²C OLED
+* Jumper wires, wearable straps/pocket, safe non-conductive mounting, and a suitable power source
 
 ---
 
@@ -245,17 +242,23 @@ Place these files in the same folder as this Markdown file:
   ├── sentra.md
   ├── sentra-cover.jpg
   ├── sentra-dashboard.jpg
-  ├── sentra-hardware.jpg
   ├── sentra-score.jpg
+  ├── sentra-hardware.jpg
+  ├── sentra-sensor-placement.jpg
+  ├── sentra-sensor-modules.jpg
   └── sentra-demo.mp4
 ```
 
-Project source repository: [github.com/diplodoculass/Sentry](https://github.com/diplodoculass/Sentry)
+Project source: [github.com/diplodoculass/Sentry](https://github.com/diplodoculass/Sentry)
 
 ---
 
 ## License
 
-SENTRA is released under the MIT License for educational and research use. The software and prototype documentation are provided without medical certification or fitness for clinical use.
+SENTRA is released under the MIT License for educational and research use. The software and documentation are provided without medical certification or fitness for clinical use.
 
 ---
+
+## Contribution Notes
+
+Contributions are welcome through GitHub issues and pull requests. Useful next steps include connecting the dashboard to the live `/data` endpoint, collecting consented benchmark data, improving motion and breathing artefact rejection, testing safer wearable mounting, and evaluating the prototype with qualified clinical and biomedical-engineering reviewers.
