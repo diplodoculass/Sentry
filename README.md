@@ -84,11 +84,9 @@ SENTRA is intended for students, caregivers, community-health innovators, and re
 
 ### Videos
 
-<video controls width="100%">
-  <source src="myosa-submission/sentra/demo.mp4" type="video/mp4">
-</video>
+https://github.com/user-attachments/assets/51d41b84-2a2c-4f2f-bbd8-d8deda3db512
 
-The local demonstration video introduces the problem, explains the system architecture and sensor roles, describes the edge-analysis approach, and walks through the dashboard.
+The demonstration video introduces the problem, explains the system architecture and sensor roles, describes the edge-analysis approach, and walks through the dashboard.
 
 ---
 
