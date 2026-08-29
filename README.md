@@ -2,7 +2,7 @@
 publishDate: 2026-08-29T00:00:00Z
 title: SENTRA — Sepsis Early Non-invasive Tracking & Risk Assessment
 excerpt: A low-cost, non-invasive prototype that combines pulse, breathing, and mobility trends into a transparent bedside early-warning score.
-image: myosa-submission/sentra/sentra-cover.jpg
+image: https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-cover.jpg
 tags:
   - healthcare
   - embedded-systems
@@ -52,34 +52,34 @@ SENTRA is intended for students, caregivers, community-health innovators, and re
 ### Images
 
 <p align="center">
-  <img src="myosa-submission/sentra/sentra-dashboard.jpg" width="800"><br/>
+  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-dashboard.jpg" width="800"><br/>
   <i>Responsive SENTRA dashboard showing the three monitored signals, combined trend, and proxy score.</i>
 </p>
 
 <p align="center">
-  <img src="myosa-submission/sentra/sentra-score.jpg" width="800"><br/>
+  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-score.jpg" width="800"><br/>
   <i>The explainable 0–3 score identifies the signal currently contributing to the warning.</i>
 </p>
 
 <p align="center">
-  <img src="myosa-submission/sentra/sentra-hardware.jpg" width="800"><br/>
+  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-hardware.jpg" width="800"><br/>
   <i>Working MYOSA/ESP32 prototype with the connected sensor and OLED modules.</i>
 </p>
 
 <p align="center">
-  <img src="myosa-submission/sentra/sentra-sensor-placement.jpg" width="800"><br/>
+  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-sensor-placement.jpg" width="800"><br/>
   <i>Prototype placement during a supervised demonstration.</i>
 </p>
 
 <p align="center">
-  <img src="myosa-submission/sentra/sentra-sensor-modules.jpg" width="800"><br/>
+  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-sensor-modules.jpg" width="800"><br/>
   <i>Close-up of the sensor modules mounted on MYOSA interface boards.</i>
 </p>
 
 ### Videos
 
 <video controls width="100%">
-  <source src="myosa-submission/sentra/sentra-demo.mp4" type="video/mp4">
+  <source src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-demo.mp4" type="video/mp4">
 </video>
 
 The local demonstration video introduces the problem, explains the system architecture and sensor roles, describes the edge-analysis approach, and walks through the dashboard.
