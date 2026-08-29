@@ -1,8 +1,12 @@
 ---
 publishDate: 2026-08-29T00:00:00Z
+
 title: SENTRA — Sepsis Early Non-invasive Tracking & Risk Assessment
+
 excerpt: A low-cost, non-invasive prototype that combines pulse, breathing, and mobility trends into a transparent bedside early-warning score.
-image: https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-cover.jpg
+
+image: myosa-submission/sentra/sentra-cover.jpg
+
 tags:
   - healthcare
   - embedded-systems
@@ -11,25 +15,15 @@ tags:
 
 > Three accessible sensors. One clear early-warning signal.
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-cover.jpg" alt="SENTRA monitoring dashboard" width="100%">
-</p>
-
-<p align="center">
-  <a href="#overview">Overview</a> •
-  <a href="#demo--examples">Demo</a> •
-  <a href="#features-detailed">Features</a> •
-  <a href="#usage-instructions">Usage</a> •
-  <a href="#requirements--installation">Installation</a>
-</p>
-
 ---
 
 ## Acknowledgements
 
-SENTRA was developed for the MYOSA project challenge using the MYOSA motherboard, an ESP32, and accessible I²C sensor modules. The project shows how affordable hardware, simple on-device analysis, and an explainable interface can make changes in a person's condition easier to notice.
+SENTRA was created for the MYOSA project challenge by **Jual Aju**, **Mishal Shanavas**, and **Mathew Geejo** using the MYOSA motherboard, an ESP32, and accessible I²C sensor modules. The project shows how affordable hardware, simple on-device analysis, and an explainable interface can make changes in a person's condition easier to notice.
 
 SENTRA is an educational research prototype, not a certified medical device. It does not diagnose sepsis or replace professional medical assessment.
+
+All photographs and demonstration footage included with this submission are original work produced by the project team.
 
 ---
 
@@ -64,44 +58,37 @@ SENTRA is intended for students, caregivers, community-health innovators, and re
 ### Images
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-dashboard.jpg" alt="SENTRA dashboard overview" width="900"><br/>
+  <img src="myosa-submission/sentra/sentra-dashboard.jpg" width="800"><br/>
   <i>Responsive SENTRA dashboard showing the three monitored signals, combined trend, and proxy score.</i>
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-score.jpg" alt="SENTRA proxy-score panel" width="360"><br/>
+  <img src="myosa-submission/sentra/sentra-score.jpg" width="800"><br/>
   <i>The explainable 0–3 score identifies the signal currently contributing to the warning.</i>
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-hardware.jpg" alt="SENTRA hardware prototype" width="480"><br/>
+  <img src="myosa-submission/sentra/sentra-hardware.jpg" width="800"><br/>
   <i>Working MYOSA/ESP32 prototype with the connected sensor and OLED modules.</i>
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-sensor-placement.jpg" alt="SENTRA sensor placement demonstration" width="480"><br/>
+  <img src="myosa-submission/sentra/sentra-sensor-placement.jpg" width="800"><br/>
   <i>Prototype placement during a supervised demonstration.</i>
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-sensor-modules.jpg" alt="SENTRA sensor modules" width="520"><br/>
+  <img src="myosa-submission/sentra/sentra-sensor-modules.jpg" width="800"><br/>
   <i>Close-up of the sensor modules mounted on MYOSA interface boards.</i>
 </p>
 
 ### Videos
 
-<p align="center">
-  <a href="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/demo.mp4">
-    <img src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/sentra-cover.jpg" alt="Play the SENTRA demonstration video" width="800">
-  </a><br/>
-  <a href="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/demo.mp4"><strong>▶ Watch the SENTRA demo video (MP4, 4:37)</strong></a>
-</p>
-
 <video controls width="100%">
-  <source src="https://raw.githubusercontent.com/diplodoculass/Sentry/main/myosa-submission/sentra/demo.mp4" type="video/mp4">
+  <source src="myosa-submission/sentra/demo.mp4" type="video/mp4">
 </video>
 
-The demonstration introduces the problem, explains the system architecture and sensor roles, shows the working hardware, describes the edge-analysis approach, and walks through the dashboard. If the embedded player is unavailable, use the preview or direct MP4 link above.
+The local demonstration video introduces the problem, explains the system architecture and sensor roles, describes the edge-analysis approach, and walks through the dashboard.
 
 ---
 
@@ -274,7 +261,7 @@ Project source: [github.com/diplodoculass/Sentry](https://github.com/diplodocula
 
 ## License
 
-SENTRA is released under the MIT License for educational and research use. The software and documentation are provided without medical certification or fitness for clinical use.
+SENTRA is released under the MIT License for educational and research use. Copyright © 2026 Jual Aju, Mishal Shanavas, and Mathew Geejo. The software and documentation are provided without medical certification or fitness for clinical use.
 
 ---
 

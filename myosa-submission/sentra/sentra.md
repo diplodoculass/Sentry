@@ -1,8 +1,12 @@
 ---
 publishDate: 2026-08-29T00:00:00Z
+
 title: SENTRA — Sepsis Early Non-invasive Tracking & Risk Assessment
+
 excerpt: A low-cost, non-invasive prototype that combines pulse, breathing, and mobility trends into a transparent bedside early-warning score.
+
 image: sentra-cover.jpg
+
 tags:
   - healthcare
   - embedded-systems
@@ -15,9 +19,11 @@ tags:
 
 ## Acknowledgements
 
-SENTRA was developed for the MYOSA project challenge using the MYOSA motherboard, an ESP32, and accessible I²C sensor modules. The project shows how affordable hardware, simple on-device analysis, and an explainable interface can make changes in a person's condition easier to notice.
+SENTRA was created for the MYOSA project challenge by **Jual Aju**, **Mishal Shanavas**, and **Mathew Geejo** using the MYOSA motherboard, an ESP32, and accessible I²C sensor modules. The project shows how affordable hardware, simple on-device analysis, and an explainable interface can make changes in a person's condition easier to notice.
 
 SENTRA is an educational research prototype, not a certified medical device. It does not diagnose sepsis or replace professional medical assessment.
+
+All photographs and demonstration footage included with this submission are original work produced by the project team.
 
 ---
 
@@ -255,7 +261,7 @@ Project source: [github.com/diplodoculass/Sentry](https://github.com/diplodocula
 
 ## License
 
-SENTRA is released under the MIT License for educational and research use. The software and documentation are provided without medical certification or fitness for clinical use.
+SENTRA is released under the MIT License for educational and research use. Copyright © 2026 Jual Aju, Mishal Shanavas, and Mathew Geejo. The software and documentation are provided without medical certification or fitness for clinical use.
 
 ---
 
